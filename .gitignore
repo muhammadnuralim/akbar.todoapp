@@ -47,8 +47,8 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-**/dist/*
-!**/dist/logo/
+# **/dist/*
+# !**/dist/logo/
 downloads/
 eggs/
 .eggs/
@@ -204,3 +204,4 @@ cache_manifest.json
 
 # Misc
 presentation/
+.vercel
