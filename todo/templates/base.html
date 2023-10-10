@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ static_url_for('static', filename='dist/css/style.css') }}">
+        <link rel="shortcut icon" href="{{ static_url_for('static', filename='dist/logo/favicon.ico') }}" type="image/x-icon">
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+    </head>
+
+    <body class="flex flex-col min-h-screen">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div id="flash" class="fixed flex gap-1 items-center left-1/2 -translate-x-1/2 bottom-10 px-2 md:px-8 py-1 text-sm sm:text-base text-white rounded-2xl {{ category }}" data-category="{{ category }}">
+                    <div id="flash-animation" class="h-20"></div>
+                    <div>{{ message }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <header id="header">
+            {% block header %}{% endblock %}
+        </header>
+        <main id="content" class="flex-1"> 
+            {% block content %}{% endblock %}
+        </main>
+        <footer id="footer"> 
+            {% block footer %}{% endblock %}
+        </footer>
+        <script src="{% block script %} {% endblock %}"></script>
+        <script src="{{ static_url_for('static', filename='dist/js/base.bundle.js') }}"></script>
+    </body>
+
+</html>

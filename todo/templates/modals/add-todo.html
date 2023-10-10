@@ -1,0 +1,37 @@
+{% extends "modals/base.html" %}
+
+{% block modal_type %}modal-add-todo{% endblock %}
+
+{% block modal_color %}bg-violet-900{% endblock %}
+
+{% block modal_content %}
+    <div class="w-full py-4 bg-violet-700 text-2xl text-center font-bold text-white rounded-t-2xl">
+        <h1>ADD NEW TASK</h1>
+    </div>
+    <form method="post" id="form-add-todo" class="flex flex-col gap-4 w-full px-8">
+        {{ add_todo_form.hidden_tag() }}
+        <label for="form-add-todo-project" class="block w-full">
+            <h6 class="text-violet-700">{{ add_todo_form.project.label }}</h6>
+            {{ add_todo_form.project(title="Project", class="block w-full px-px py-1 text-violet-700 border border-solid border-violet-700 rounded-md focus:outline-none") }}
+        </label>
+        <label for="form-add-todo-title" class="block w-full">
+            <h6 class="text-violet-700">{{ add_todo_form.title.label }}</h6>
+            {{ add_todo_form.title(title="Title of the task", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs text-slate-500 focus:text-slate-900 focus:outline-none") }}
+        </label>
+        <label for="form-add-todo-description" class="block w-full">
+            <h6 class="text-violet-700">{{ add_todo_form.description.label }}</h6>
+            {{ add_todo_form.description(rows='4', title="Description of the task", class="w-full text-xs text-slate-500 border-b border-solid border-slate-500 focus:border-slate-900 focus:text-slate-900 focus:outline-none") }}
+        </label>
+        <div class="flex gap-1">
+            <button id="form-add-todo-submit" type="submit" title="Add the task" class="flex-1 py-1 max-h-8 bg-violet-700 text-white rounded-lg uppercase cursor-pointer shadow-button-sm hover:bg-violet-900 active:shadow-inner disabled:bg-slate-300 disabled:shadow-none disabled:cursor-not-allowed" disabled>
+                add
+            </button>
+            <button type="reset" id="form-add-todo-reset" title="Start over" class="px-2 py-1 bg-slate-400 text-white rounded-lg hover:bg-slate-600">
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+            </button>
+        </div>
+    </form>
+    <button id="modal-add-todo-close-button" class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-violet-700" title="Cancel">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+{% endblock %}

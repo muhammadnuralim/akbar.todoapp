@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+    TODO - Projects
+{% endblock %}
+
+{% block header %}
+    {% include "components/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="projects-loading" class="absolute flex justify-center items-center w-screen h-screen bg-white/70 backdrop-blur-sm z-20"></div>
+    <section class="px-10 py-8 lg:px-28">
+        <div id="modal-add-project-show-button" class="py-4 bg-indigo-700 text-white rounded-3xl shadow-card-lg cursor-pointer group active:shadow-inner sm:flex sm:justify-between sm:items-center" title="Add a new project">
+            <div class="hidden sm:block"></div>
+            <div class="text-center sm:pl-8">
+                <h1 class="text-5xl font-bold uppercase sm:text-6xl">Projects</h1>
+                <h3 id="projects-counter" class="text-xl text-white font-medium"></h3>
+            </div>
+            <div class="hidden sm:block sm:pr-8">
+                <i class="fa-solid fa-circle-plus fa-2xl invisible group-hover:visible"></i>
+            </div>
+        </div>
+    </section>
+    <section id="projects-container" class="grid grid-cols-1 gap-4 px-10 py-8 sm:grid-cols-2 lg:grid-cols-3 lg:px-28"></section>
+
+    {% include "modals/add-todo.html" %}
+    {% include "modals/add-project.html" %}
+    {% include "modals/edit-project.html" %}
+    {% include "modals/delete-project.html" %}
+
+{% endblock %}
+
+{% block footer %}
+    {% include "components/footer.html" %}
+{% endblock %}
+
+{% block script %}
+    {{ static_url_for('static', filename='dist/js/projects.bundle.js') }}
+{% endblock %}

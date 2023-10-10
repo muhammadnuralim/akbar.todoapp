@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    TODO - Login
+{% endblock %}
+
+{% block content %}
+    <section class="flex">
+        <aside class="hidden bg-login lg:sidebar">
+            <img src="{{ static_url_for('static', filename='dist/logo/text-logo-white.svg') }}" alt="Text Logo White" class="w-32 drop-shadow-lg"/>
+            <p class="text-white text-4xl text-center font-medium">A Simple<br>Todo App</p>
+        </aside>
+        <div class="flex-1 flex flex-col gap-8 justify-center items-center px-16 py-8
+                    md:px-24 lg:px-28 lg:py-0">
+            <a href="{{ url_for('views.home_page') }}">
+                <img src="{{ static_url_for('static', filename='dist/logo/logo.svg') }}" alt="Logo" class="w-24 drop-shadow-2xl">
+            </a>
+            <h1 class="text-4xl font-bold text-violet-700">LOGIN</h1>
+            <form method="post" id="form" class="flex flex-col gap-4 w-full">
+                {{ form.hidden_tag() }}
+                <label for="form-login-email" class="block w-full">
+                    <h6 class="text-violet-700">{{ form.email.label }}</h6>
+                    {{ form.email(type="email", title="Email Address", placeholder="Enter your email address...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-4 placeholder:text-xs") }}
+                </label>
+                <label for="password" class="block w-full">
+                    <h6 class="text-violet-700">{{ form.password.label }}</h6>
+                    {{ form.password(type="password", title="Password", placeholder="Enter your password...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-400 placeholder:text-xs") }}
+                </label>
+                <p class="text-right text-xs text-violet-700">Do not have an account?
+                    <a href="{{ url_for('views.register_page') }}" class="font-semibold">Register</a>
+                </p>
+                <button id="form-login-submit" type="submit" title="Log in" class="py-1 h-8 bg-violet-700 text-white rounded-lg uppercase cursor-pointer shadow-button-sm hover:bg-violet-900 active:shadow-inner disabled:bg-slate-300 disabled:shadow-none disabled:cursor-not-allowed" disabled>
+                    login
+                </button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    {{ static_url_for('static', filename='dist/js/login.bundle.js') }}
+{% endblock %}

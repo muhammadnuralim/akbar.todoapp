@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+@layer base {
+    html {
+        @apply font-quicksand overflow-x-hidden
+    }
+}
+
+@layer components {
+    .sidebar {
+        @apply flex flex-col gap-4 justify-center items-center w-1/4 h-screen bg-cover bg-center bg-no-repeat px-8 rounded-r-4xl drop-shadow-right
+    }
+
+    .success,
+    .hello {
+        @apply bg-green-600
+    }
+    .error {
+        @apply bg-red-600
+    }
+    .info {
+        @apply bg-blue-600
+    }
+
+    .shadow-button-sm {
+        @apply shadow-[0px_2px_5px_rgba(0,0,0,0.6)]
+    }
+    .shadow-button-lg {
+        @apply shadow-[2px_2px_5px_rgba(0,0,0,0.3)]
+    }
+    .shadow-card-sm {
+        @apply shadow-[3px_5px_10px_rgba(0,0,0,0.3)]
+    }
+    .shadow-card-lg {
+        @apply shadow-[5px_7px_10px_rgba(0,0,0,0.3)]
+    }
+    .shadow-modal {
+        @apply shadow-[0px_0px_0px_9999px_rgba(0,0,0,0.7)]
+    }
+}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    TODO - Register
+{% endblock %}
+
+{% block content %}
+    <section class="lg:flex">
+        <aside class="hidden bg-register lg:sidebar">
+            <img src="{{ static_url_for('static', filename='dist/logo/text-logo-white.svg') }}" alt="Text Logo White" class="w-32 drop-shadow-lg"/>
+            <p class="text-white text-4xl text-center font-medium">A Simple<br>Todo App</p>
+        </aside>
+        <div class="flex flex-col gap-4 justify-center items-center px-16 py-8 
+                    md:px-24 lg:px-28 lg:py-0 lg:flex-1 lg:gap-2">
+            <a href="{{ url_for('views.home_page') }}">
+                <img src="{{ static_url_for('static', filename='dist/logo/logo.svg') }}" alt="Logo" class="w-16 drop-shadow-2xl sm:w-20 lg:w-24">
+            </a>
+            <h1 class="text-4xl font-bold text-violet-700">REGISTER</h1>
+            <form method="post" id="register-form" class="flex flex-col gap-4 w-full">
+                {{ form.hidden_tag() }}
+                <label for="form-register-name">
+                    <h6 class="text-violet-700 after:content-['*'] after:ml-0.5 after:text-rose-500">{{ form.name.label }}</h6>
+                    {{ form.name(type="text", title="Full Name", placeholder="Enter your full name...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-400 placeholder:text-xs") }}
+                </label>
+                <label for="form-register-role">
+                    <h6 class="text-violet-700 after:content-['*'] after:ml-0.5 after:text-rose-500">{{ form.role.label }}</h6>
+                    {{ form.role(type="text", title="Role", placeholder="Enter your role...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-400 placeholder:text-xs") }}
+                </label>
+                <label for="form-register-email">
+                    <h6 class="text-violet-700 after:content-['*'] after:ml-0.5 after:text-rose-500">{{ form.email.label }}</h6>
+                    {{ form.email(type="email", title="Email Address", placeholder="Enter your email address...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-400 placeholder:text-xs") }}
+                </label>
+                <label for="form-register-password">
+                    <h6 class="text-violet-700 after:content-['*'] after:ml-0.5 after:text-rose-500">{{ form.password.label }}</h6>
+                    {{ form.password(type="password", title="Password", placeholder="Enter your password...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-400 placeholder:text-xs") }}
+                </label>
+                <label for="form-register-confirm-password">
+                    <h6 class="text-violet-700 after:content-['*'] after:ml-0.5 after:text-rose-500">{{ form.confirm_password.label }}</h6>
+                    {{ form.confirm_password(type="password", title="Confirm Password", placeholder="Confirm your password...", class="block border-b border-solid border-slate-500 focus:border-slate-900 w-full mt-2 text-xs focus:outline-none placeholder:text-slate-400 placeholder:text-xs") }}
+                </label>
+                <p class="text-right text-xs text-violet-700">Already have an account?
+                    <a href="{{ url_for('views.login_page') }}" class="font-semibold">Login</a>
+                </p>
+                <button id="form-register-submit" type="submit" title="Create your account" class="py-1 h-8 bg-violet-700 text-white rounded-lg uppercase cursor-pointer shadow-button-sm hover:bg-violet-900 active:shadow-inner disabled:bg-slate-300 disabled:shadow-none disabled:cursor-not-allowed" disabled>
+                    create account
+                </button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    {{ static_url_for('static', filename='dist/js/register.bundle.js') }}
+{% endblock %}

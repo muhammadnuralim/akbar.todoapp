@@ -1,0 +1,6 @@
+<div id="{% block modal_type %} {% endblock %}" class="flex justify-center items-center {% block modal_color %} {% endblock %} bg-opacity-80 w-screen h-screen fixed top-0 left-0 hidden">
+    <div class="relative flex flex-col gap-8 justify-center items-center w-80 pb-8 bg-white rounded-3xl"> 
+        {% block modal_content %}
+        {% endblock %}
+    </div>
+</div>

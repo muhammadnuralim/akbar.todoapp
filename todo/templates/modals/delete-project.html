@@ -1,0 +1,31 @@
+{% extends "modals/base.html" %}
+
+{% block modal_type %}modal-delete-project{% endblock %}
+
+{% block modal_color %}bg-rose-900{% endblock %}
+
+{% block modal_content %}
+    <div class="w-full py-4 bg-rose-700 text-2xl text-center font-bold text-white rounded-t-2xl">
+        <h1>DELETE PROJECT</h1>
+    </div>
+    <div class="text-sm text-center">
+        <p>You will delete this project:
+            <span id="modal-delete-project-deleted" class="text-rose-700 font-bold"></span>
+        </p>
+        <p>Deleting this project would also
+            <span class="text-rose-700">delete all the tasks</span>
+            inside it.</p>
+        <p>Are you sure?</p>
+    </div>
+    <div class="flex gap-4 justify-center items-center">
+        <button type="submit" id="modal-delete-project-confirm" class="px-6 py-1 bg-rose-700 text-white rounded-lg hover:bg-rose-900 active:shadow-inner">
+            Confirm
+        </button>
+        <button type="button" id="modal-delete-project-cancel" class="px-4 py-1 bg-white text-rose-700 border border-solid border-rose-700 rounded-lg hover:text-rose-900 hover:border-rose-900">
+            Cancel
+        </button>
+    </div>
+    <button id="modal-delete-project-close-button" class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-rose-700" title="Cancel">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+{% endblock %}

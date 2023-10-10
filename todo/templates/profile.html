@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+    TODO - Profile
+{% endblock %}
+
+{% block header %}
+    {% include "components/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="profile-loading" class="absolute flex justify-center items-center w-screen h-screen bg-white/70 backdrop-blur-sm z-20"></div>
+    <section class="flex gap-4 w-4/5 mx-auto mt-8 px-4 py-4 rounded-3xl shadow-card-lg md:px-8">
+        <div class="w-1/4 max-w-[200px]">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png?w=740&t=st=1688325346~exp=1688325946~hmac=fc0ebe33e94cb0919e7c1fcb397412936e6dc2afe4d38353dbdc067a14d4ee51" alt="Profile Photo" class="w-full rounded-lg"/>
+        </div>
+        <div id="profile-user" class="flex-1 flex flex-col gap-4 md:gap-0 md:justify-between">
+            <div class="flex flex-col">
+                <h1 id="profile-user-name" class="text-2xl text-violet-700 font-bold focus:outline-none focus:border-b focus:border-solid focus:border-violet-900 sm:text-3xl" contenteditable="true" spellcheck="false"></h1>
+                <h3 id="profile-user-role" class="text-lg text-violet-500 font-medium focus:outline-none focus:border-b focus:border-solid focus:border-violet-900" contenteditable="true" spellcheck="false"></h3>
+            </div>
+            <div>
+                <p id="profile-user-bio" class="text-xs text-slate-800 italic focus:outline-none focus:mb-1 focus:border-b focus:border-solid focus:border-slate-900" contenteditable="true"></p>
+            </div>
+            <div class="text-center sm:text-right">
+                <button id="profile-user-update" class="bg-violet-700 px-4 py-px text-white rounded-lg shadow-button-lg uppercase hidden">
+                    update profile
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="flex flex-col gap-4 w-4/5 mx-auto mt-8 px-8 py-4">
+        <div class="flex gap-2 w-full items-center">
+            <h6 class="text-slate-400 text-sm font-medium">Tasks Details</h6>
+            <div class="flex-1 w-full h-px bg-slate-400"></div>
+        </div>
+        <div class="flex flex-col gap-1 justify-center items-center w-full py-8 bg-indigo-700 rounded-xl">
+            <h2 class="text-white text-xl">Total Tasks</h2>
+            <h2 id="profile-tasks-total" class="text-white text-3xl font-bold"></h2>
+        </div>
+        <div class="flex justify-between">
+            <div class="w-2/5 rounded-lg shadow-card-sm">
+                <div class="w-full py-2 text-sm text-center text-white bg-violet-700 rounded-lg sm:text-base">
+                    <h3>Tasks On Progress</h3>
+                </div>
+                <div class="py-4 text-center text-2xl text-violet-700 font-bold">
+                    <h3 id="profile-tasks-onprogress"></h3>
+                </div>
+            </div>
+            <div class="w-2/5 rounded-lg shadow-card-sm">
+                <div class="w-full py-2 text-sm text-center text-white bg-teal-600 rounded-lg sm:text-base">
+                    <h3>Tasks Done</h3>
+                </div>
+                <div class="py-4 text-center text-2xl text-teal-700 font-bold">
+                    <h3 id="profile-tasks-done"></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    {% include "components/footer.html" %}
+{% endblock %}
+
+{% block script %}
+    {{ static_url_for('static', filename='dist/js/profile.bundle.js') }}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+    TODO - Home
+{% endblock %}
+
+{% block header %}
+    {% include "components/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div id="home-loading" class="absolute flex justify-center items-center w-screen h-screen bg-white/70 backdrop-blur-sm z-20"></div>
+    <button id="home-show-menu-button" class="fixed bottom-10 right-12 w-10 h-10 rounded-full px-2 bg-violet-700 text-2xl text-white shadow-button-lg hover:bg-violet-900" title="Add Task">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+    <section id="home-projects" class="relative flex flex-col items-center px-10 py-8 lg:px-28">
+        <div id="home-projects-dropdown" title="Filter Tasks by Projects" class="w-full py-4 bg-indigo-700 text-white text-sm rounded-full shadow-card-sm group cursor-pointer active:shadow-inner sm:flex sm:justify-between sm:items-center">
+            <div class="hidden sm:block"></div>
+            <div class="flex gap-4 justify-center items-center sm:pl-8">
+                <i class="fa-solid fa-cubes fa-2xl"></i>
+                <h1 id="home-project-selected" class="text-3xl">All Projects</h1>
+            </div>
+            <div class="hidden sm:block sm:pr-8">
+                <i class="fa-solid fa-circle-chevron-down fa-2xl invisible group-hover:visible"></i>
+            </div>
+        </div>
+        <ul id="home-projects-options" class="absolute mt-20 w-4/5 text-3xl bg-indigo-700 text-white rounded-2xl hidden"></ul>
+    </section>
+    <section id="home-todos-dones" class="flex flex-col gap-4 justify-between px-10 sm:flex-row md:gap-8 lg:px-28 lg:gap-16">
+        <div id="home-todos-container" class="flex flex-col gap-4 items-center w-full sm:w-1/2">
+            <h1 id="home-todos-heading" class="text-3xl text-violet-700 font-bold">To Do</h1>
+        </div>
+        <div id="home-dones-container" class="flex flex-col gap-4 items-center w-full sm:w-1/2">
+            <h1 id="home-dones-heading" class="text-3xl text-teal-600 font-bold">Done</h1>
+        </div>
+    </section>
+    <section id="home-menu" class="fixed flex flex-col gap-2 justify-center items-center left-0 right-0 bottom-0 py-4 bg-white transition-transform duration-300 translate-y-full sm:rounded-t-full">
+        <div>
+            <h1 class="text-lg text-slate-500">What do you want to add?</h1>
+        </div>
+        <div class="w-1/4 h-px bg-slate-200"></div>
+        <div class="flex gap-8 justify-center items-center">
+            <button type="button" id="modal-add-todo-show-button" title="Add a new task" class="flex flex-col items-center gap-1 px-8 py-2 border border-solid border-violet-700 text-violet-700 rounded-lg hover:bg-violet-700 hover:text-white">
+                <span>
+                    <i class="fa-sharp fa-solid fa-bars-progress fa-xl"></i>
+                </span>
+                <h6 class="text-lg font-medium">Add Task</h6>
+            </button>
+            <button type="button" id="modal-add-project-show-button" title="Add a new project" class="flex flex-col items-center gap-1 px-4 py-2 border border-solid border-indigo-700 text-indigo-700 rounded-lg hover:bg-indigo-700 hover:text-white">
+                <span>
+                    <i class="fa-solid fa-cubes fa-xl"></i>
+                </span>
+                <h6 class="text-lg font-medium">Add Project</h6>
+            </button>
+        </div>
+    </section>
+
+    {% include "modals/add-project.html" %}
+    {% include "modals/add-todo.html" %}
+    {% include "modals/edit-todo.html" %}
+    {% include "modals/delete-todo.html" %}
+
+{% endblock %}
+
+{% block footer %}
+    {% include "components/footer.html" %}
+{% endblock %}
+
+{% block script %}
+    {{ static_url_for('static', filename='dist/js/home.bundle.js') }}
+{% endblock %}

@@ -1,0 +1,37 @@
+<nav class="flex justify-between items-center w-screen px-10 py-4 bg-navbar bg-cover bg-center bg-no-repeat md:px-16 lg:px-28">
+    <div class="flex gap-2">
+        <a href="{{ url_for('views.home_page') }}">
+            <img src="{{ static_url_for('static', filename='dist/logo/logo.svg') }}" alt="Logo" class="h-8">
+        </a>
+        <a href="{{ url_for('views.home_page') }}">
+            <img src="{{ static_url_for('static', filename='dist/logo/text-logo-white.svg') }}" alt="Text Logo" class="h-8">
+        </a>
+    </div>
+    <div id="landing-hamburger-button" class="group sm:hidden">
+        <i class="fa-solid fa-bars text-white group-hover:cursor-pointer"></i>
+    </div>
+    <div id="landing-hamburger-menu" class="absolute top-12 right-10 px-4 py-2 bg-violet-700 rounded-xl transition-opacity duration-300 opacity-0 invisible shadow-button-lg z-10">
+        <ul class="text-white text-center">
+            <li class="font-semibold"> Hello, {{ current_user.name }}!</li>
+            <li class="w-full h-px my-1 bg-white/30"></li>
+            <li class="hover:text-teal-400">
+                <a href="{{ url_for('views.projects_page') }}" title="View your projects">Projects</a>
+            </li>
+            <li class="hover:text-teal-400">
+                <a href="{{ url_for('views.profile_page') }}" title="View your profile">Profile</a>
+            </li>
+            <li class="w-full h-px my-1 bg-white/30"></li>
+            <li class="h-6 hover:text-rose-400">
+                <a href="{{ url_for('auth.logout') }}" title="Logout your account">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="hidden text-white sm:flex gap-4">
+        <h1 id="current-user" class="font-semibold" data-user="{{ current_user.user_id }}">
+            Hello, {{ current_user.name }}!
+        </h1>
+        <a href="{{ url_for('views.projects_page') }}" title="View your projects" class="hover:text-teal-400">Projects</a>
+        <a href="{{ url_for('views.profile_page') }}" title="View your profile" class="hover:text-teal-400">Profile</a>
+        <a href="{{ url_for('auth.logout') }}" class="max-h-6 max-w-[24px] hover:text-rose-400" title="Logout your account">Logout</a>
+    </div>
+</nav>
